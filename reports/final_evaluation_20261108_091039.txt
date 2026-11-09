@@ -1,0 +1,373 @@
+ASSERTLLM FINAL EVALUATION REPORT
+Date and time: 2026-11-08T09:10:39
+============================================================
+
+SCRIPT: scripts/multi_mutation_test.py
+===== ASSERTLLM RELIABLE COUNTER MUTATION TEST =====
+
+===== Testing: original =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+===== AI-GENERATED SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/counter_sva_generated_tb.sv:40: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 225ps; walltime 0.001 s; speed 168.114 ns/s
+- Verilator: cpu 0.001 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASS
+
+===== Testing: increment_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[35] %Error: counter_assertions.sv:12: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: no_reset_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[15] %Error: counter_assertions.sv:5: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:5: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: reset_value_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[15] %Error: counter_assertions.sv:5: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:5: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+========== FINAL MUTATION REPORT ==========
+original             : PASS
+increment_bug        : DETECTED
+no_reset_bug         : DETECTED
+reset_value_bug      : DETECTED
+
+Mutants tested: 3
+Valid mutant results: 3
+Mutants detected: 3
+Mutation detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/mutation_results.csv
+
+COUNTER MUTATION TEST: PASSED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/updown_mutation_test.py
+===== ASSERTLLM RELIABLE UP/DOWN MUTATION TEST =====
+
+===== Testing: original =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+===== AI-GENERATED UP/DOWN SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/updown_counter_sva_tb.sv:45: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 625ps; walltime 0.001 s; speed 380.056 ns/s
+- Verilator: cpu 0.002 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASS
+
+===== Testing: increment_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[35] %Error: updown_counter_assertions.sv:12: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: decrement_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[235] %Error: updown_counter_assertions.sv:19: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:19: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: direction_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[35] %Error: updown_counter_assertions.sv:12: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+========== FINAL RESULTS ==========
+original             : PASS
+increment_bug        : DETECTED
+decrement_bug        : DETECTED
+direction_bug        : DETECTED
+
+Mutants tested: 3
+Valid mutant results: 3
+Mutants detected: 3
+Mutation detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/updown_mutation_results.csv
+
+UP/DOWN MUTATION TEST: PASSED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/fsm_mutation_test.py
+===== ASSERTLLM RELIABLE FSM MUTATION TEST =====
+
+===== TESTING ORIGINAL =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+===== FSM SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/controller_fsm_sva_tb.sv:88: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 155ps; walltime 0.001 s; speed 99.694 ns/s
+- Verilator: cpu 0.002 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASSED
+
+===== TESTING START_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[35] %Error: controller_fsm_assertions.sv:14: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:14: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING FINISH_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[65] %Error: controller_fsm_assertions.sv:23: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:23: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING DONE_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[75] %Error: controller_fsm_assertions.sv:31: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:31: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING OUTPUTS_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[35] %Error: controller_fsm_assertions.sv:38: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:38: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== FSM MUTATION SUMMARY =====
+original: PASS
+start_bug: DETECTED
+finish_bug: DETECTED
+done_bug: DETECTED
+outputs_bug: DETECTED
+
+Mutants tested: 4
+Mutants detected: 4
+Detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/fsm_mutation_results.csv
+
+FSM MUTATION TEST: COMPLETED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/alu4_mutation_test.py
+===== ASSERTLLM ALU4 MUTATION TEST =====
+
+===== TESTING ORIGINAL =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+TEST: A=12 B=10 Sel=010 Output= 8 Carry=0
+TEST: A=12 B=10 Sel=011 Output=14 Carry=0
+TEST: A=12 B=10 Sel=100 Output= 6 Carry=0
+TEST: A=10 B= 0 Sel=101 Output= 5 Carry=0
+TEST: A= 9 B= 3 Sel=110 Output= 0 Carry=0
+TEST: A= 9 B= 3 Sel=111 Output= 0 Carry=0
+===== ALU AI-GENERATED ASSERTION TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/alu4_sva_generated_tb.sv:80: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 110ps; walltime 0.001 s; speed 59.691 ns/s
+- Verilator: cpu 0.002 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASSED
+
+===== TESTING ADD_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+[15] %Error: alu4_assertions.sv:7: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:7: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING SUB_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+[35] %Error: alu4_assertions.sv:15: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:15: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING AND_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+[55] %Error: alu4_assertions.sv:23: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:23: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING OR_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+TEST: A=12 B=10 Sel=010 Output= 8 Carry=0
+[65] %Error: alu4_assertions.sv:31: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:31: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING XOR_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+TEST: A=12 B=10 Sel=010 Output= 8 Carry=0
+TEST: A=12 B=10 Sel=011 Output=14 Carry=0
+[75] %Error: alu4_assertions.sv:39: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:39: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING NOT_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+TEST: A=12 B=10 Sel=010 Output= 8 Carry=0
+TEST: A=12 B=10 Sel=011 Output=14 Carry=0
+TEST: A=12 B=10 Sel=100 Output= 6 Carry=0
+[85] %Error: alu4_assertions.sv:47: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:47: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING INVALID_BUG =====
+Compilation successful.
+===== ALU AI-GENERATED ASSERTION TEST =====
+TEST: A= 9 B= 7 Sel=000 Output= 0 Carry=1
+TEST: A= 3 B= 4 Sel=000 Output= 7 Carry=0
+TEST: A= 9 B= 7 Sel=001 Output= 2 Carry=0
+TEST: A= 3 B= 5 Sel=001 Output=14 Carry=1
+TEST: A=12 B=10 Sel=010 Output= 8 Carry=0
+TEST: A=12 B=10 Sel=011 Output=14 Carry=0
+TEST: A=12 B=10 Sel=100 Output= 6 Carry=0
+TEST: A=10 B= 0 Sel=101 Output= 5 Carry=0
+[95] %Error: alu4_assertions.sv:55: Assertion failed in alu4_sva_generated_tb: 'assert' failed.
+%Error: generated/alu4_assertions.sv:55: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== ALU4 MUTATION SUMMARY =====
+original: PASS
+add_bug: DETECTED
+sub_bug: DETECTED
+and_bug: DETECTED
+or_bug: DETECTED
+xor_bug: DETECTED
+not_bug: DETECTED
+invalid_bug: DETECTED
+
+Mutants tested: 7
+Mutants detected: 7
+Detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/alu4_mutation_results.csv
+
+ALU4 MUTATION TEST: COMPLETED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/combined_evaluation.py
+===== ASSERTLLM RELIABLE COMBINED EVALUATION =====
+
+ORIGINAL RTL RESULTS
+rtl/alu4.v                                         : PASS
+rtl/controller_fsm.v                               : PASS
+rtl/counter.v                                      : PASS
+rtl/updown_counter.v                               : PASS
+
+UNIQUE MUTANT RESULTS
+mutations/alu4_bug_add.v                                : DETECTED
+mutations/alu4_bug_and.v                                : DETECTED
+mutations/alu4_bug_invalid.v                            : DETECTED
+mutations/alu4_bug_not.v                                : DETECTED
+mutations/alu4_bug_or.v                                 : DETECTED
+mutations/alu4_bug_sub.v                                : DETECTED
+mutations/alu4_bug_xor.v                                : DETECTED
+mutations/controller_fsm_bug_done.v                     : DETECTED
+mutations/controller_fsm_bug_finish.v                   : DETECTED
+mutations/controller_fsm_bug_outputs.v                  : DETECTED
+mutations/controller_fsm_bug_start.v                    : DETECTED
+mutations/counter_bug_increment.v                       : DETECTED
+mutations/counter_bug_no_reset.v                        : DETECTED
+mutations/counter_bug_reset_value.v                     : DETECTED
+mutations/updown_bug_decrement.v                        : DETECTED
+mutations/updown_bug_direction.v                        : DETECTED
+mutations/updown_bug_increment.v                        : DETECTED
+
+========== SUMMARY ==========
+Expected original designs : 4
+Original designs passed   : 4
+Missing original results  : 0
+Expected unique mutants   : 17
+Detected                  : 17
+Not detected              : 0
+Compile errors            : 0
+Simulation errors         : 0
+Other/missing results     : 0
+Unique detection rate     : 100.00%
+
+COMBINED EVALUATION: PASSED
+All original designs passed.
+All expected mutants have valid results.
+
+STATUS: SUCCESS
+
+MASTER STATUS: PASSED

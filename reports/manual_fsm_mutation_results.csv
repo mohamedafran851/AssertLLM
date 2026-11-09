@@ -1,0 +1,11 @@
+timestamp,design,rtl_file,result,exit_code
+2026-11-06T12:05:26,original,rtl/controller_fsm.v,PASS,0
+2026-11-06T12:05:42,start_bug,mutations/controller_fsm_bug_start.v,DETECTED,-6
+2026-11-06T12:05:59,finish_bug,mutations/controller_fsm_bug_finish.v,DETECTED,-6
+2026-11-06T12:06:15,done_bug,mutations/controller_fsm_bug_done.v,DETECTED,-6
+2026-11-06T12:06:32,outputs_bug,mutations/controller_fsm_bug_outputs.v,DETECTED,-6
+2026-11-09T12:10:09,original,rtl/controller_fsm.v,PASS,0
+2026-11-09T12:10:17,start_bug,mutations/controller_fsm_bug_start.v,DETECTED,-6
+2026-11-09T12:10:25,finish_bug,mutations/controller_fsm_bug_finish.v,DETECTED,-6
+2026-11-09T12:10:33,done_bug,mutations/controller_fsm_bug_done.v,DETECTED,-6
+2026-11-09T12:10:41,outputs_bug,mutations/controller_fsm_bug_outputs.v,DETECTED,-6

@@ -1,0 +1,17 @@
+Design a 5-state Moore finite state machine sequence detector.
+
+The detector must recognize the serial bit pattern 1011.
+Inputs:
+- clk: clock
+- reset: synchronous active-high reset
+- din: serial input bit
+
+Output:
+- detected: becomes 1 when the sequence 1011 is detected.
+
+Requirements:
+1. Detect the sequence 1011.
+2. Support overlapping sequence detection.
+3. Keep detected high for the detection state.
+4. Reset must return the FSM to its initial state and clear detected.
+5. Use the five states S0, S1, S2, S3, and S4.

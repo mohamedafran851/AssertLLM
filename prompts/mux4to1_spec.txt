@@ -1,0 +1,24 @@
+DESIGN: 4-TO-1 MULTIPLEXER
+
+INPUTS:
+D: 4-bit data input.
+Sel: 2-bit select input.
+
+OUTPUT:
+Y: 1-bit output.
+
+FUNCTION:
+If Sel = 00, Y = D[0].
+If Sel = 01, Y = D[1].
+If Sel = 10, Y = D[2].
+If Sel = 11, Y = D[3].
+
+REQUIREMENTS:
+1. Output must match the selected data input.
+2. All four select combinations must work.
+3. The design is combinational.
+4. No clock.
+5. No reset.
+
+DESIGN TYPE:
+Combinational logic.

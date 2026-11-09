@@ -1,0 +1,52 @@
+DESIGN: 4-BIT COMBINATIONAL ALU
+
+INPUTS:
+A: 4-bit unsigned input.
+B: 4-bit unsigned input.
+ALU_Sel: 3-bit operation selector.
+
+OUTPUTS:
+ALU_Out: 4-bit result.
+CarryOut: 1-bit carry output.
+
+OPERATIONS:
+
+1. ADD:
+ALU_Sel = 000
+ALU_Out and CarryOut together represent A + B.
+The result is 5 bits.
+
+2. SUB:
+ALU_Sel = 001
+ALU_Out and CarryOut together represent
+the 5-bit unsigned result of A - B.
+
+3. AND:
+ALU_Sel = 010
+ALU_Out = A & B.
+CarryOut = 0.
+
+4. OR:
+ALU_Sel = 011
+ALU_Out = A | B.
+CarryOut = 0.
+
+5. XOR:
+ALU_Sel = 100
+ALU_Out = A ^ B.
+CarryOut = 0.
+
+6. NOT:
+ALU_Sel = 101
+ALU_Out = ~A.
+CarryOut = 0.
+
+7. INVALID OPERATIONS:
+ALU_Sel = 110 or 111
+ALU_Out = 0000.
+CarryOut = 0.
+
+DESIGN TYPE:
+Combinational logic.
+No reset.
+No internal clock.

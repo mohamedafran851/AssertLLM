@@ -1,0 +1,9 @@
+timestamp,design,rtl_file,result
+2026-11-06T11:30:02,original,rtl/updown_counter.v,PASS
+2026-11-06T11:30:02,increment_bug,mutations/updown_bug_increment.v,DETECTED
+2026-11-06T11:30:02,decrement_bug,mutations/updown_bug_decrement.v,DETECTED
+2026-11-06T11:30:02,direction_bug,mutations/updown_bug_direction.v,DETECTED
+2026-11-09T12:08:28,original,rtl/updown_counter.v,PASS
+2026-11-09T12:08:28,increment_bug,mutations/updown_bug_increment.v,DETECTED
+2026-11-09T12:08:28,decrement_bug,mutations/updown_bug_decrement.v,DETECTED
+2026-11-09T12:08:28,direction_bug,mutations/updown_bug_direction.v,DETECTED

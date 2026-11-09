@@ -1,0 +1,29 @@
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Verilator build directories
+obj_*/
+
+# Compiled simulation files
+*.vvp
+*.o
+*.out
+
+# Temporary files
+*.tmp
+*.log
+
+# Editor files
+.vscode/
+.idea/
+# Compiled simulation executables
+alu4_sim
+fsm_check
+fsm_sim
+multiplier4_sim
+mux4_sim
+seq_sim

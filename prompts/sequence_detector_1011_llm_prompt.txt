@@ -1,0 +1,55 @@
+Generate exactly TWO SystemVerilog assertions for the sequence detector.
+
+Signals:
+clk, reset, din, detected, dut.state
+
+State encodings:
+S3 = 3'b011
+S4 = 3'b100
+
+REQUIRED ASSERTION 1:
+Name: sequence_1011_detected
+
+property sequence_1011_detected;
+    @(posedge clk)
+    disable iff (reset)
+    (dut.state == 3'b011 && din == 1'b1)
+    |=> detected;
+endproperty
+assert property (sequence_1011_detected);
+
+REQUIRED ASSERTION 2:
+Name: detected_matches_state
+
+property detected_matches_state;
+    @(posedge clk)
+    (detected == (dut.state == 3'b100));
+endproperty
+assert property (detected_matches_state);
+
+CRITICAL JSON REQUIREMENT:
+Your entire response MUST be one JSON object.
+The object MUST contain one key named "assertions".
+The value of "assertions" MUST be an array containing exactly TWO objects.
+Each array object MUST contain "name" and "code".
+
+Your response MUST follow this exact structure:
+
+{
+  "assertions": [
+    {
+      "name": "sequence_1011_detected",
+      "code": "property sequence_1011_detected; @(posedge clk) disable iff (reset) (dut.state == 3'b011 && din == 1'b1) |=> detected; endproperty assert property (sequence_1011_detected);"
+    },
+    {
+      "name": "detected_matches_state",
+      "code": "property detected_matches_state; @(posedge clk) (detected == (dut.state == 3'b100)); endproperty assert property (detected_matches_state);"
+    }
+  ]
+}
+
+Do not return a single object.
+Do not omit the assertions array.
+Do not add Markdown fences, explanations, or text outside the JSON.
+Do not invent signals.
+Return both assertions.

@@ -1,0 +1,16 @@
+{
+    "assertions": [
+        {
+            "name": "reset_property",
+            "code": "property reset_property;\n    @(posedge clk)\n    reset |=> (count == 4'd0);\nendproperty\nassert property (reset_property);"
+        },
+        {
+            "name": "up_count_property",
+            "code": "property up_count_property;\n    @(posedge clk)\n    (past_valid && !$past(reset) && $past(direction))\n    |-> (count == ($past(count) + 4'd1));\nendproperty\nassert property (up_count_property);"
+        },
+        {
+            "name": "down_count_property",
+            "code": "property down_count_property;\n    @(posedge clk)\n    (past_valid && !$past(reset) && !$past(direction))\n    |-> (count == ($past(count) - 4'd1));\nendproperty\nassert property (down_count_property);"
+        }
+    ]
+}

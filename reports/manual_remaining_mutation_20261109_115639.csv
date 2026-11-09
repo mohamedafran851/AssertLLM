@@ -1,0 +1,17 @@
+Design,Test,Result
+alu4,original,PASS
+alu4,add_bug,DETECTED
+alu4,sub_bug,DETECTED
+alu4,and_bug,DETECTED
+alu4,or_bug,DETECTED
+alu4,xor_bug,DETECTED
+alu4,not_bug,DETECTED
+alu4,invalid_bug,DETECTED
+mux4to1,original,PASS
+mux4to1,d0_bug,DETECTED
+mux4to1,d1_bug,DETECTED
+mux4to1,d2_bug,DETECTED
+mux4to1,d3_bug,DETECTED
+sequence_detector_1011,original,PASS
+sequence_detector_1011,bug_transition,DETECTED
+sequence_detector_1011,bug_output,DETECTED

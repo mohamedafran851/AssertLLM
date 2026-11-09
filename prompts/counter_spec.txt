@@ -1,0 +1,21 @@
+DESIGN: 4-bit synchronous counter
+
+CLOCK:
+- Signal name: clk
+- Positive edge triggered
+
+RESET:
+- Signal name: reset
+- Active-high synchronous reset
+- When reset is high, count must become zero.
+
+COUNTER BEHAVIOUR:
+- Counter increments by one on every rising clock edge
+  when reset is low.
+- Counter is 4 bits wide.
+- After reaching 15, it wraps around to zero.
+
+EXPECTED VERIFICATION:
+- Check reset behaviour.
+- Check increment behaviour.
+- Check overflow behaviour.

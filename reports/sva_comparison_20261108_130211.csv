@@ -1,0 +1,7 @@
+design,expected_requirements,manual_properties,llm_properties,manual_assertions,llm_assertions,property_count_match,manual_property_names,llm_property_names
+Counter,3,3,3,3,3,YES,manual_reset_property; manual_increment_property; manual_overflow_property,reset_property; increment_property; overflow_property
+UpDown Counter,3,3,3,3,3,YES,manual_reset_property; manual_up_property; manual_down_property,reset_property; up_count_property; down_count_property
+Controller FSM,6,6,6,6,6,YES,manual_reset_property; manual_idle_property; manual_busy_property; manual_done_property; manual_output_property; manual_legal_state_property,reset_property; idle_transition_property; busy_transition_property; done_transition_property; output_property; legal_state_property
+4-bit ALU,7,7,7,7,7,YES,manual_alu_add_property; manual_alu_sub_property; manual_alu_and_property; manual_alu_or_property; manual_alu_xor_property; manual_alu_not_property; manual_alu_invalid_property,alu_add_property; alu_sub_property; alu_and_property; alu_or_property; alu_xor_property; alu_not_property; alu_invalid_property
+4:1 MUX,4,4,4,4,4,YES,mux_sel_00; mux_sel_01; mux_sel_10; mux_sel_11,mux_sel_00_property; mux_sel_01_property; mux_sel_10_property; mux_sel_11_property
+Sequence Detector 1011,2,2,2,2,2,YES,sequence_1011_detected; detected_matches_state,sequence_1011_detected; detected_matches_state

@@ -1,0 +1,49 @@
+MANUAL vs LLM-GENERATED SVA COMPARISON
+=======================================================
+
+Design: Counter
+Expected requirements: 3
+Manual properties/assertions: 3/3
+LLM properties/assertions: 3/3
+Property count check: YES
+-------------------------------------------------------
+Design: UpDown Counter
+Expected requirements: 3
+Manual properties/assertions: 3/3
+LLM properties/assertions: 3/3
+Property count check: YES
+-------------------------------------------------------
+Design: Controller FSM
+Expected requirements: 6
+Manual properties/assertions: 6/6
+LLM properties/assertions: 6/6
+Property count check: YES
+-------------------------------------------------------
+Design: 4-bit ALU
+Expected requirements: 7
+Manual properties/assertions: 7/7
+LLM properties/assertions: 7/7
+Property count check: YES
+-------------------------------------------------------
+Design: 4:1 MUX
+Expected requirements: 4
+Manual properties/assertions: 4/4
+LLM properties/assertions: 4/4
+Property count check: YES
+-------------------------------------------------------
+Design: Sequence Detector 1011
+Expected requirements: 2
+Manual properties/assertions: 2/2
+LLM properties/assertions: 2/2
+Property count check: YES
+-------------------------------------------------------
+
+SUMMARY
+Designs analyzed: 6
+Designs with matching counts: 6
+Expected requirements: 25
+Manual assertions: 25
+LLM assertions: 25
+
+NOTE: Matching property/assertion counts do not prove semantic equivalence or functional correctness.
+Requirement-level matches must be supported by manual review and simulation.

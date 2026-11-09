@@ -1,0 +1,7 @@
+Design,Manual Original,Manual Detected,Manual Mutants,Manual Rate,LLM Original,LLM Detected,LLM Mutants,LLM Rate
+Counter,PASS,3,3,100.0%,PASS,3,3,100.0%
+UpDown Counter,PASS,3,3,100.0%,PASS,3,3,100.0%
+Controller FSM,PASS,4,4,100.0%,PASS,4,4,100.0%
+4-bit ALU,PASS,7,7,100.0%,PASS,7,7,100.0%
+4:1 MUX,PASS,4,4,100.0%,PASS,4,4,100.0%
+Sequence Detector 1011,PASS,2,2,100.0%,N/A,2,2,100.0%

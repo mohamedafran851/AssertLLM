@@ -1,0 +1,226 @@
+ASSERTLLM FINAL EVALUATION REPORT
+Date and time: 2026-11-04T17:48:49
+============================================================
+
+SCRIPT: scripts/multi_mutation_test.py
+===== ASSERTLLM RELIABLE COUNTER MUTATION TEST =====
+
+===== Testing: original =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+===== AI-GENERATED SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/counter_sva_generated_tb.sv:40: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 225ps; walltime 0.002 s; speed 102.996 ns/s
+- Verilator: cpu 0.002 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASS
+
+===== Testing: increment_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[35] %Error: counter_assertions.sv:12: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: no_reset_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[15] %Error: counter_assertions.sv:5: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:5: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: reset_value_bug =====
+Compilation successful.
+===== AI-GENERATED SVA TEST =====
+[15] %Error: counter_assertions.sv:5: Assertion failed in counter_sva_generated_tb: 'assert' failed.
+%Error: generated/counter_assertions.sv:5: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+========== FINAL MUTATION REPORT ==========
+original             : PASS
+increment_bug        : DETECTED
+no_reset_bug         : DETECTED
+reset_value_bug      : DETECTED
+
+Mutants tested: 3
+Valid mutant results: 3
+Mutants detected: 3
+Mutation detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/mutation_results.csv
+
+COUNTER MUTATION TEST: PASSED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/updown_mutation_test.py
+===== ASSERTLLM RELIABLE UP/DOWN MUTATION TEST =====
+
+===== Testing: original =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+===== AI-GENERATED UP/DOWN SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/updown_counter_sva_tb.sv:45: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 625ps; walltime 0.002 s; speed 209.495 ns/s
+- Verilator: cpu 0.003 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASS
+
+===== Testing: increment_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[35] %Error: updown_counter_assertions.sv:12: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: decrement_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[235] %Error: updown_counter_assertions.sv:19: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:19: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+===== Testing: direction_bug =====
+Compilation successful.
+===== AI-GENERATED UP/DOWN SVA TEST =====
+[35] %Error: updown_counter_assertions.sv:12: Assertion failed in updown_counter_sva_tb: 'assert' failed.
+%Error: generated/updown_counter_assertions.sv:12: Verilog $stop
+Aborting...
+
+RESULT: BUG DETECTED
+
+========== FINAL RESULTS ==========
+original             : PASS
+increment_bug        : DETECTED
+decrement_bug        : DETECTED
+direction_bug        : DETECTED
+
+Mutants tested: 3
+Valid mutant results: 3
+Mutants detected: 3
+Mutation detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/updown_mutation_results.csv
+
+UP/DOWN MUTATION TEST: PASSED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/fsm_mutation_test.py
+===== ASSERTLLM RELIABLE FSM MUTATION TEST =====
+
+===== TESTING ORIGINAL =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+===== FSM SVA TEST COMPLETED =====
+- /home/devil/AssertLLM/testbench/controller_fsm_sva_tb.sv:88: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 155ps; walltime 0.002 s; speed 16.072 ns/s
+- Verilator: cpu 0.010 s on 1 threads; alloced 121 MB
+
+RESULT: ORIGINAL PASSED
+
+===== TESTING START_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[35] %Error: controller_fsm_assertions.sv:14: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:14: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING FINISH_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[65] %Error: controller_fsm_assertions.sv:23: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:23: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING DONE_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[75] %Error: controller_fsm_assertions.sv:31: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:31: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== TESTING OUTPUTS_BUG =====
+Compilation successful.
+===== AI-GENERATED FSM SVA TEST =====
+[35] %Error: controller_fsm_assertions.sv:38: Assertion failed in controller_fsm_sva_tb: 'assert' failed.
+%Error: generated/controller_fsm_assertions.sv:38: Verilog $stop
+Aborting...
+
+RESULT: MUTANT DETECTED
+
+===== FSM MUTATION SUMMARY =====
+original: PASS
+start_bug: DETECTED
+finish_bug: DETECTED
+done_bug: DETECTED
+outputs_bug: DETECTED
+
+Mutants tested: 4
+Mutants detected: 4
+Detection rate: 100.00%
+
+Results saved to: /home/devil/AssertLLM/reports/fsm_mutation_results.csv
+
+FSM MUTATION TEST: COMPLETED
+
+STATUS: SUCCESS
+
+SCRIPT: scripts/combined_evaluation.py
+===== ASSERTLLM RELIABLE COMBINED EVALUATION =====
+
+ORIGINAL RTL RESULTS
+rtl/controller_fsm.v                               : PASS
+rtl/counter.v                                      : PASS
+rtl/updown_counter.v                               : PASS
+
+UNIQUE MUTANT RESULTS
+mutations/controller_fsm_bug_done.v                     : DETECTED
+mutations/controller_fsm_bug_finish.v                   : DETECTED
+mutations/controller_fsm_bug_outputs.v                  : DETECTED
+mutations/controller_fsm_bug_start.v                    : DETECTED
+mutations/counter_bug_increment.v                       : DETECTED
+mutations/counter_bug_no_reset.v                        : DETECTED
+mutations/counter_bug_reset_value.v                     : DETECTED
+mutations/updown_bug_decrement.v                        : DETECTED
+mutations/updown_bug_direction.v                        : DETECTED
+mutations/updown_bug_increment.v                        : DETECTED
+
+========== SUMMARY ==========
+Expected original designs : 3
+Original designs passed   : 3
+Missing original results  : 0
+Expected unique mutants   : 10
+Detected                  : 10
+Not detected              : 0
+Compile errors            : 0
+Simulation errors         : 0
+Other/missing results     : 0
+Unique detection rate     : 100.00%
+
+COMBINED EVALUATION: PASSED
+All original designs passed.
+All expected mutants have valid results.
+
+STATUS: SUCCESS
+
+MASTER STATUS: PASSED

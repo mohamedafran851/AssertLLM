@@ -1,0 +1,117 @@
+ASSERTLLM - MANUAL VS LLM ASSERTION QUALITY REVIEW
+==================================================
+
+1. PROJECT COMPARISON SUMMARY
+-----------------------------
+RTL designs analyzed: 6
+Manual assertions: 25
+LLM-generated assertions: 25
+Expected requirements: 25
+Requirement-level matches: 25
+Designs with matching assertion counts: 6/6
+
+Design-wise comparison:
+Counter:                  3/3
+Up/Down Counter:           3/3
+Controller FSM:            6/6
+4-bit ALU:                 7/7
+4:1 MUX:                   4/4
+Sequence Detector 1011:   2/2
+
+2. RESET PROPERTY ANALYSIS
+--------------------------
+Three sequential designs were inspected:
+- Counter
+- Up/Down Counter
+- Controller FSM
+
+All three use synchronous active-high reset.
+
+Manual assertions use:
+(past_valid && reset)
+
+LLM-generated assertions use:
+reset
+
+Finding:
+The LLM assertions check the first reset cycle,
+whereas the manual assertions skip checking until
+past_valid becomes true.
+
+The generated reset assertions are appropriate
+for the inspected RTL and testbench reset sequence.
+No functional defect was identified in this difference.
+
+3. PROPERTY-LEVEL OBSERVATIONS
+------------------------------
+Counter:
+All three requirements are represented in both versions.
+Reset, increment and overflow are covered.
+
+Up/Down Counter:
+Both versions cover reset, increment and decrement.
+Four-bit arithmetic supports wraparound.
+
+Controller FSM:
+Both versions cover reset, IDLE transition, BUSY
+transition, DONE transition, Moore outputs and
+illegal-state detection.
+
+4-bit ALU:
+Both versions cover addition, subtraction, AND,
+OR, XOR, NOT and invalid selectors.
+
+4:1 MUX:
+Both versions cover all four selector combinations.
+
+Sequence Detector 1011:
+Both versions cover sequence detection and output-state
+correspondence. The first assertion uses equivalent
+input conditions: din and din == 1'b1.
+
+4. SIMULATION AND MUTATION EVALUATION
+-------------------------------------
+Latest master evaluation:
+Original RTL designs passed: 6/6
+Unique mutants tested: 23
+Mutants detected: 23
+Mutants not detected: 0
+Compile errors: 0
+Simulation errors: 0
+Unique mutation detection rate: 100%
+
+This result applies only to the selected mutants
+and current simulation testbenches.
+
+5. LIMITATIONS
+--------------
+- Matching assertion counts do not prove semantic equivalence.
+- Requirement-level matching is based on manual review.
+- Simulation does not constitute a formal proof.
+- Clocked checks on combinational designs only inspect
+  sampled clock edges.
+- Mutation detection depends on the selected mutations.
+- Additional tests are needed for broader input and
+  reset scenarios.
+
+6. OVERALL CONCLUSION
+---------------------
+The LLM-generated assertion set contains the same
+number of properties as the manual assertion set
+across all six designs.
+
+All 25 reviewed requirements have corresponding
+manual and generated assertions.
+
+The latest master evaluation detected all 23 selected
+mutants, with all six original RTL designs passing.
+
+These results demonstrate promising assertion-generation
+and bug-detection performance for the evaluated designs.
+
+Further semantic equivalence analysis, broader simulation
+and formal verification are recommended.
+
+==================================================
+END OF REVIEW
+==================================================

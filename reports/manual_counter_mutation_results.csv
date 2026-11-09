@@ -1,0 +1,9 @@
+timestamp,design,rtl_file,result
+2026-11-05T17:38:52,original,rtl/counter.v,PASS
+2026-11-05T17:38:52,increment_bug,mutations/counter_bug_increment.v,DETECTED
+2026-11-05T17:38:52,no_reset_bug,mutations/counter_bug_no_reset.v,DETECTED
+2026-11-05T17:38:52,reset_value_bug,mutations/counter_bug_reset_value.v,DETECTED
+2026-11-09T12:07:00,original,rtl/counter.v,PASS
+2026-11-09T12:07:00,increment_bug,mutations/counter_bug_increment.v,DETECTED
+2026-11-09T12:07:00,no_reset_bug,mutations/counter_bug_no_reset.v,DETECTED
+2026-11-09T12:07:00,reset_value_bug,mutations/counter_bug_reset_value.v,DETECTED

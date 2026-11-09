@@ -1,0 +1,24 @@
+{
+    "assertions": [
+        {
+            "name": "reset_property",
+            "code": "property reset_property;\n    @(posedge clk)\n    reset |=> (state == 2'b00);\nendproperty\nassert property (reset_property);"
+        },
+        {
+            "name": "idle_transition_property",
+            "code": "property idle_transition_property;\n    @(posedge clk)\n    (past_valid && !$past(reset) &&\n     $past(state) == 2'b00)\n    |-> (($past(start) && state == 2'b01) ||\n         (!$past(start) && state == 2'b00));\nendproperty\nassert property (idle_transition_property);"
+        },
+        {
+            "name": "busy_transition_property",
+            "code": "property busy_transition_property;\n    @(posedge clk)\n    (past_valid && !$past(reset) &&\n     $past(state) == 2'b01)\n    |-> (($past(finish) && state == 2'b10) ||\n         (!$past(finish) && state == 2'b01));\nendproperty\nassert property (busy_transition_property);"
+        },
+        {
+            "name": "done_transition_property",
+            "code": "property done_transition_property;\n    @(posedge clk)\n    (past_valid && !$past(reset) &&\n     $past(state) == 2'b10)\n    |-> (state == 2'b00);\nendproperty\nassert property (done_transition_property);"
+        },
+        {
+            "name": "output_property",
+            "code": "property output_property;\n    @(posedge clk)\n    (busy == (state == 2'b01)) &&\n    (done == (state == 2'b10));\nendproperty\nassert property (output_property);"
+        }
+    ]
+}

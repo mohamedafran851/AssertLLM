@@ -1,0 +1,52 @@
+ASSERTLLM - FINAL MANUAL VS LLM-GENERATED SVA COMPARISON
+==============================================================
+
+DESIGN-WISE MUTATION RESULTS
+--------------------------------------------------------------
+Counter
+  Manual SVA: 3/3 mutants detected
+  LLM SVA:    3/3 mutants detected
+
+UpDown Counter
+  Manual SVA: 3/3 mutants detected
+  LLM SVA:    3/3 mutants detected
+
+Controller FSM
+  Manual SVA: 4/4 mutants detected
+  LLM SVA:    4/4 mutants detected
+
+4-bit ALU
+  Manual SVA: 7/7 mutants detected
+  LLM SVA:    7/7 mutants detected
+
+4:1 MUX
+  Manual SVA: 4/4 mutants detected
+  LLM SVA:    4/4 mutants detected
+
+Sequence Detector 1011
+  Manual SVA: 2/2 mutants detected
+  LLM SVA:    2/2 mutants detected
+
+OVERALL RESULTS
+--------------------------------------------------------------
+Selected mutants: 23
+Manual SVA detected: 23/23 (100.0%)
+LLM SVA detected: 23/23 (100.0%)
+
+EXPERIMENTAL LIMITATIONS
+--------------------------------------------------------------
+1. Results apply only to the selected mutants in this experiment.
+2. Equal mutation scores do not prove semantic equivalence.
+3. Requirement matching was based on manual review, not formal proof.
+4. Simulation-based mutation testing is not formal verification.
+5. Clocked assertions for combinational ALU and MUX designs sample
+   outputs at clock edges rather than continuously.
+6. Identical testbench stimulus has not yet been verified for every
+   manual/generated pair, particularly Counter, UpDown Counter,
+   and Controller FSM.
+
+CONCLUSION
+--------------------------------------------------------------
+The experiment compares manually written and LLM-generated SVA
+using the selected RTL mutations across six designs. The results
+should be interpreted within the stated experimental limitations.

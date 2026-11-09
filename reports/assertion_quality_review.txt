@@ -1,0 +1,136 @@
+ASSERTLLM - ASSERTION QUALITY REVIEW
+====================================
+
+DESIGN 1: 4-BIT COUNTER
+----------------------
+Requirements: 3
+Covered: 3
+Missing: 0
+
+Assertions:
+1. reset_property
+2. increment_property
+3. overflow_property
+
+Observation:
+Overflow assertion is logically implied by
+4-bit increment arithmetic but is retained
+for explicit requirement checking.
+
+
+DESIGN 2: 4-BIT UP/DOWN COUNTER
+-------------------------------
+Requirements: 3
+Covered: 3
+Missing: 0
+
+Assertions:
+1. reset_property
+2. up_count_property
+3. down_count_property
+
+Observation:
+4-bit arithmetic handles both wraparound cases.
+
+
+DESIGN 3: 3-STATE FSM
+---------------------
+Requirements: 7
+Covered: 7
+Missing: 0
+
+Assertions:
+1. reset_property
+2. idle_transition_property
+3. busy_transition_property
+4. done_transition_property
+5. output_property
+
+Observation:
+Add an explicit illegal-state assertion
+to check that state never becomes 2'b11.
+
+
+OVERALL REVIEW
+--------------
+Total written requirements: 13
+Requirements covered: 13
+Requirements missing: 0
+
+Further work:
+1. Add FSM illegal-state checking.
+2. Consider explicit wraparound checking.
+3. Evaluate false positives.
+4. Compare manual and LLM-generated assertions.
+
+Note:
+This is a manual coverage review, not a
+formal proof of assertion correctness.
+
+ILLEGAL-STATE ASSERTION EXPERIMENT
+----------------------------------
+Test: FSM transitions from DONE to 2'b11.
+Original FSM test with six assertions: PASS.
+Illegal-state mutant: DETECTED.
+Detection time: 55 ps.
+Failing assertion: legal_state_property.
+Result: New legal-state property works in isolation.
+
+Note:
+The existing DONE transition property would also
+be expected to detect this specific mutant when
+the complete assertion set is enabled.
+This experiment isolates the new property; it does
+not establish unique additional mutation coverage.
+
+FSM MUTATION TEST WITH SIX ASSERTIONS
+-------------------------------------
+Original FSM: PASS
+
+Mutants tested: 4
+Mutants detected: 4
+Detection rate: 100%
+
+Detected mutants:
+1. start_bug - idle_transition_property
+2. finish_bug - busy_transition_property
+3. done_bug - done_transition_property
+4. outputs_bug - output_property
+
+Compile errors: 0
+Simulation infrastructure errors: 0
+
+Conclusion:
+The six-assertion FSM checker detected all four
+existing FSM mutants under the current testbench.
+This does not guarantee detection of every
+possible FSM bug.
+
+FALSE-POSITIVE EVALUATION
+------------------------
+Tested original designs: 3
+Original designs passed: 3
+Observed false assertion failures: 0
+
+Counter: PASS
+Up/down counter: PASS
+FSM: PASS
+
+Combined evaluation:
+Unique mutants tested: 10
+Mutants detected: 10
+Unique mutation detection rate: 100%
+Compile errors: 0
+Simulation errors: 0
+
+Conclusion:
+No false assertion failures were observed
+for the three original designs in the current
+simulation testbenches.
+
+This result is limited to the tested designs
+and simulation scenarios. It does not prove
+that false positives are impossible.
+
+Final master report:
+reports/final_evaluation_20261105_162943.txt

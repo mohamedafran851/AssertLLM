@@ -1,0 +1,16 @@
+ASSERTLLM - MANUAL SVA MUTATION EVALUATION
+================================================
+Original designs passed: 3/3
+Mutants tested: 13
+Mutants detected: 13
+Mutants not detected: 0
+Compile/simulation errors: 0
+Mutation detection rate: 100.00%
+
+Design-wise results:
+alu4: 7/7 mutants detected
+mux4to1: 4/4 mutants detected
+sequence_detector_1011: 2/2 mutants detected
+
+Note: This score applies only to the selected mutants and testbenches.
+================================================

@@ -1,0 +1,4 @@
+Design,Status,Detected
+original,PASS,N/A
+bug_transition,BUG_DETECTED,YES
+bug_output,BUG_DETECTED,YES

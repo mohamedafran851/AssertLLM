@@ -1,0 +1,32 @@
+{
+    "assertions": [
+        {
+            "name": "alu_add_property",
+            "code": "property alu_add_property;\n@(posedge clk)\n(ALU_Sel == 3'b000)\n|->\n({CarryOut, ALU_Out} == ({1'b0, A} + {1'b0, B}));\nendproperty\nassert property (alu_add_property);"
+        },
+        {
+            "name": "alu_sub_property",
+            "code": "property alu_sub_property;\n@(posedge clk)\n(ALU_Sel == 3'b001)\n|->\n({CarryOut, ALU_Out} == ({1'b0, A} - {1'b0, B}));\nendproperty\nassert property (alu_sub_property);"
+        },
+        {
+            "name": "alu_and_property",
+            "code": "property alu_and_property;\n@(posedge clk)\n(ALU_Sel == 3'b010)\n|->\n(ALU_Out == (A & B)) && (CarryOut == 1'b0);\nendproperty\nassert property (alu_and_property);"
+        },
+        {
+            "name": "alu_or_property",
+            "code": "property alu_or_property;\n@(posedge clk)\n(ALU_Sel == 3'b011)\n|->\n(ALU_Out == (A | B)) && (CarryOut == 1'b0);\nendproperty\nassert property (alu_or_property);"
+        },
+        {
+            "name": "alu_xor_property",
+            "code": "property alu_xor_property;\n@(posedge clk)\n(ALU_Sel == 3'b100)\n|->\n(ALU_Out == (A ^ B)) && (CarryOut == 1'b0);\nendproperty\nassert property (alu_xor_property);"
+        },
+        {
+            "name": "alu_not_property",
+            "code": "property alu_not_property;\n@(posedge clk)\n(ALU_Sel == 3'b101)\n|->\n(ALU_Out == (~A)) && (CarryOut == 1'b0);\nendproperty\nassert property (alu_not_property);"
+        },
+        {
+            "name": "alu_invalid_property",
+            "code": "property alu_invalid_property;\n@(posedge clk)\n((ALU_Sel == 3'b110) || (ALU_Sel == 3'b111))\n|->\n(ALU_Out == 4'b0000) && (CarryOut == 1'b0);\nendproperty\nassert property (alu_invalid_property);"
+        }
+    ]
+}

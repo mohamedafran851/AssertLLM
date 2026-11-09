@@ -1,0 +1,22 @@
+DESIGN: 4-BIT UNSIGNED MULTIPLIER
+
+INPUTS:
+A: 4-bit unsigned input.
+B: 4-bit unsigned input.
+
+OUTPUT:
+Product: 8-bit unsigned multiplication result.
+
+FUNCTION:
+Product = A * B.
+
+REQUIREMENTS:
+1. Product must equal A multiplied by B.
+2. The output must support the full 8-bit result.
+3. Minimum result: 0.
+4. Maximum result: 225 (15 * 15).
+
+DESIGN TYPE:
+Combinational logic.
+No clock.
+No reset.

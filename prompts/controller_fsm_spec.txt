@@ -1,0 +1,49 @@
+DESIGN: 3-state Moore FSM controller
+
+CLOCK:
+- Signal name: clk
+- Positive-edge triggered.
+
+RESET:
+- Signal name: reset
+- Active-high synchronous reset.
+- When reset is high at the rising clock edge,
+  the FSM must enter IDLE.
+
+STATES:
+- IDLE = 2'b00
+- BUSY = 2'b01
+- DONE = 2'b10
+
+STATE TRANSITIONS:
+
+1. IDLE:
+   - If start = 1, transition to BUSY.
+   - If start = 0, remain in IDLE.
+
+2. BUSY:
+   - If finish = 1, transition to DONE.
+   - If finish = 0, remain in BUSY.
+   - The start input does not affect this state.
+
+3. DONE:
+   - Transition to IDLE on the next rising clock edge.
+   - Inputs do not affect this transition.
+
+OUTPUTS:
+- busy = 1 only when the current state is BUSY.
+- done = 1 only when the current state is DONE.
+- Both outputs must be 0 in IDLE.
+
+FSM TYPE:
+- Moore finite state machine.
+- Outputs depend only on the current state.
+
+EXPECTED VERIFICATION:
+- Verify synchronous reset.
+- Verify IDLE to BUSY transition.
+- Verify IDLE remains IDLE when start = 0.
+- Verify BUSY remains BUSY when finish = 0.
+- Verify BUSY to DONE transition.
+- Verify DONE to IDLE transition.
+- Verify output correctness in every state.

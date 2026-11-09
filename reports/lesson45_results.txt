@@ -1,0 +1,36 @@
+ASSERTLLM - LESSON 45 RESULTS
+
+Project:
+AssertLLM: LLM-Assisted SystemVerilog Assertion Generation and RTL Bug Detection
+
+LLM:
+Qwen2.5-Coder:3b (local Ollama)
+
+RTL:
+4-bit synchronous counter
+
+Verification tool:
+Verilator 5.032
+
+Generated assertions:
+1. Reset property
+2. Increment property
+3. Overflow property
+
+EXPERIMENT 1: ORIGINAL RTL
+Compilation: PASS
+Simulation: PASS
+
+EXPERIMENT 2: MUTATED RTL
+Mutation: Counter increment changed from +1 to +2
+Compilation: PASS
+Simulation: ASSERTION FAILURE
+Bug detection: PASS
+
+FINAL RESULT:
+ASSERTLLM AI SVA MUTATION TEST PASSED
+
+NOTE:
+This experiment demonstrates successful detection of
+one injected counter increment bug using LLM-generated
+SystemVerilog assertions.

@@ -1,0 +1,181 @@
+
+ASSERTLLM
+MANUAL VS LLM-GENERATED ASSERTION COMPARISON
+================================================
+
+1. OBJECTIVE
+
+The objective of this experiment is to compare manually written
+SystemVerilog Assertions (SVA) with LLM-generated SVA for three RTL
+designs:
+
+- 4-bit Counter
+- 4-bit Up/Down Counter
+- 3-state Moore FSM
+
+Both approaches are evaluated using original RTL simulations and
+mutation testing.
+
+2. EXPERIMENTAL SETUP
+
+Simulation and verification tool:
+- Verilator 5.032
+- SystemVerilog assertions enabled
+- Timing simulation enabled
+
+Assertion sources:
+- Manual assertions: manual/
+- LLM-generated assertions: generated/
+
+RTL designs:
+- rtl/counter.v
+- rtl/updown_counter.v
+- rtl/controller_fsm.v
+
+Both approaches use separate testbenches and separate mutation
+testing scripts. The same RTL mutants are used for each approach.
+
+3. COUNTER RESULTS
+
+Original design:
+- Manual assertions: PASS
+- LLM-generated assertions: PASS
+
+Mutants:
+- Increment bug
+- No-reset bug
+- Incorrect reset-value bug
+
+Manual detection: 3/3 (100%)
+LLM detection:    3/3 (100%)
+
+4. UP/DOWN COUNTER RESULTS
+
+Original design:
+- Manual assertions: PASS
+- LLM-generated assertions: PASS
+
+Mutants:
+- Increment bug
+- Decrement bug
+- Direction bug
+
+Manual detection: 3/3 (100%)
+LLM detection:    3/3 (100%)
+
+5. FSM RESULTS
+
+Original design:
+- Manual assertions: PASS
+- LLM-generated assertions: PASS
+
+Mutants:
+- Start transition bug
+- Finish transition bug
+- Done transition bug
+- Output bug
+
+Manual detection: 4/4 (100%)
+LLM detection:    4/4 (100%)
+
+6. OVERALL COMPARISON
+
+                         MANUAL       LLM
+Counter                  3/3          3/3
+Up/Down Counter          3/3          3/3
+FSM                      4/4          4/4
+------------------------------------------------
+Total mutants            10           10
+Mutants detected         10           10
+Detection rate           100%         100%
+
+Original designs:
+- Manual checker: all 3 passed
+- LLM checker: all 3 passed
+
+7. OBSERVATIONS
+
+1. Both manual and LLM-generated assertions detected all ten
+   injected RTL bugs in the experiments.
+
+2. Both approaches passed simulations of the three original RTL
+   designs under their respective testbench stimuli.
+
+3. The manual and LLM-generated checkers contain corresponding
+   functional properties for reset, counter operations, FSM
+   transitions and output behavior.
+
+4. Matching mutation detection rates indicate that the LLM-generated
+   assertions performed comparably to the manual assertions for
+   these particular experiments.
+
+5. The results demonstrate the potential of LLM assistance in
+   generating useful SystemVerilog assertions.
+
+8. LIMITATIONS
+
+1. Only three RTL designs and ten injected mutants were evaluated.
+
+2. Simulation-based mutation testing does not prove complete RTL
+   correctness.
+
+3. Results depend on the testbench stimulus and the bugs selected.
+
+4. Equal mutation detection rates do not establish that both
+   assertion sets are logically equivalent.
+
+5. The FSM illegal-state property has not yet been evaluated using
+   a dedicated isolated illegal-state mutant in this comparison.
+
+6. Additional designs, mutants, corner cases and formal verification
+   experiments are required for stronger conclusions.
+
+9. CONCLUSION
+
+The experiment achieved a 100% mutation detection rate for both
+manual and LLM-generated assertions across the ten tested RTL
+mutants.
+
+The results support the usefulness of LLM-assisted SystemVerilog
+assertion generation as a design verification aid.
+
+However, manual review, simulation and additional verification
+remain necessary to establish assertion quality and RTL correctness.
+
+================================================
+END OF REPORT
+
+10. ADDITIONAL FSM ILLEGAL-STATE EXPERIMENT
+
+Objective:
+To independently evaluate the FSM legal-state assertion without
+depending on the other FSM assertions.
+
+Mutant:
+- Modified the DONE transition to enter illegal state 2'b11
+  instead of returning to IDLE (2'b00).
+
+Assertion:
+- past_valid |-> (state != 2'b11)
+
+Test:
+- Used fsm_illegal_state_tb.sv with only the legal-state assertion.
+- Compiled from a clean Verilator build directory.
+- Tool: Verilator 5.032.
+
+Result:
+- Compilation: SUCCESS
+- Simulation: ASSERTION FAILURE at time 55
+- Illegal state detected: 2'b11
+- Result: DETECTED
+
+Observation:
+The isolated legal-state assertion independently detected the
+illegal FSM state. This provides additional evidence that the
+property can detect an illegal-state transition without relying
+on the other FSM assertions.
+
+Note:
+This is an additional experiment and is not included in the
+original 10-mutant manual-versus-LLM comparison.
+

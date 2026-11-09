@@ -1,0 +1,6 @@
+timestamp,design,rtl_file,result,exit_code
+2026-11-08T12:13:51,original,mux4to1.v,PASS,0
+2026-11-08T12:13:59,d0_bug,mux4to1_bug_d0.v,DETECTED,-6
+2026-11-08T12:14:07,d1_bug,mux4to1_bug_d1.v,DETECTED,-6
+2026-11-08T12:14:15,d2_bug,mux4to1_bug_d2.v,DETECTED,-6
+2026-11-08T12:14:22,d3_bug,mux4to1_bug_d3.v,DETECTED,-6
